@@ -6,9 +6,9 @@ EnhancedVolcano <- function(
   selectLab = NULL,
   xlim = c(min(toptable[,x], na.rm=TRUE),
     max(toptable[,x], na.rm=TRUE)),
-  ylim = c(0, max(-log10(toptable[,y]), na.rm=TRUE) + 5),
+  ylim = c(0, max((toptable[,y]), na.rm=TRUE) + 5),
   xlab = bquote(~Log[2]~ "fold change"),
-  ylab = bquote(~-Log[10]~italic(P)),
+  ylab = bquote(~italic(P)),
   axisLabSize = 18,
   title = 'Volcano plot',
   subtitle = 'Bioconductor package EnhancedVolcano',
@@ -178,7 +178,7 @@ EnhancedVolcano <- function(
   #
   # 1, both colCustom and shapeCustom are activated
   if (!is.null(colCustom) & !is.null(shapeCustom)) {
-    plot <- ggplot(toptable, aes(x=xvals, y=-log10(yvals))) + th +
+    plot <- ggplot(toptable, aes(x=xvals, y=(yvals))) + th +
 
       # over-ride legend icon sizes for colour and shape.
       # guide_legends are separate for colour and shape;
@@ -208,7 +208,7 @@ EnhancedVolcano <- function(
 
   # 2, only colCustom is activated and 'shape' has just a single value
   } else if (!is.null(colCustom) & is.null(shapeCustom) & length(shape) == 1) {
-    plot <- ggplot(toptable, aes(x=xvals, y=-log10(yvals))) + th +
+    plot <- ggplot(toptable, aes(x=xvals, y=(yvals))) + th +
 
       # over-ride legend icon sizes for colour and shape.
       # guide_legends are separate for colour and shape;
@@ -243,7 +243,7 @@ EnhancedVolcano <- function(
 
   # 3, only colCustom is activated and 'shape' has 4 values
   } else if (!is.null(colCustom) & is.null(shapeCustom) & length(shape) == 4) {
-    plot <- ggplot(toptable, aes(x=xvals, y=-log10(yvals))) + th +
+    plot <- ggplot(toptable, aes(x=xvals, y=(yvals))) + th +
 
       # over-ride legend icon sizes for colour and shape.
       # guide_legends are separate for colour and shape;
@@ -290,7 +290,7 @@ EnhancedVolcano <- function(
 
   # 4, only shapeCustom is activated
   } else if (is.null(colCustom) & !is.null(shapeCustom)) {
-    plot <- ggplot(toptable, aes(x=xvals, y=-log10(yvals))) + th +
+    plot <- ggplot(toptable, aes(x=xvals, y=(yvals))) + th +
 
       # over-ride legend icon sizes for colour and shape.
       # guide_legends are separate for colour and shape;
@@ -337,7 +337,7 @@ EnhancedVolcano <- function(
   # 5, both colCustom and shapeCustom are null;
   # only a single shape value specified
   } else if (is.null(colCustom) & is.null(shapeCustom) & length(shape) == 1) {
-    plot <- ggplot(toptable, aes(x=xvals, y=-log10(yvals))) + th +
+    plot <- ggplot(toptable, aes(x=xvals, y=(yvals))) + th +
 
       # over-ride legend icon sizes for colour and shape.
       # including 'shape' in the colour guide_legend here
@@ -371,7 +371,7 @@ EnhancedVolcano <- function(
   # 6, both colCustom and shapeCustom are null;
   # four shape values are specified
   } else if (is.null(colCustom) & is.null(shapeCustom) & length(shape) == 4) {
-    plot <- ggplot(toptable, aes(x=xvals, y=-log10(yvals))) + th +
+    plot <- ggplot(toptable, aes(x=xvals, y=(yvals))) + th +
 
       # over-ride legend icon sizes for colour and shape.
       # including 'shape' in the colour guide_legend here
@@ -430,7 +430,7 @@ EnhancedVolcano <- function(
       colour = cutoffLineCol,
       size = cutoffLineWidth) +
 
-    geom_hline(yintercept = -log10(pCutoff),
+    geom_hline(yintercept = (pCutoff),
       linetype = cutoffLineType,
       colour = cutoffLineCol,
       size = cutoffLineWidth)
@@ -447,7 +447,7 @@ EnhancedVolcano <- function(
       size = vlineWidth)
   }
   if (!is.null(hline)) {
-    plot <- plot + geom_hline(yintercept = -log10(hline),
+    plot <- plot + geom_hline(yintercept = (hline),
       linetype = hlineType,
       colour = hlineCol,
       size = hlineWidth)
