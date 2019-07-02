@@ -8,7 +8,7 @@ EnhancedVolcano <- function(
     max(toptable[,x], na.rm=TRUE)),
   ylim = c(0, max((toptable[,y]), na.rm=TRUE) + 5),
   xlab = bquote(~Log[2]~ "fold change"),
-  ylab = bquote(~italic(Posterior Probability)),
+  ylab = bquote("Posterior Probability"),
   axisLabSize = 18,
   title = 'Volcano plot',
 #   subtitle = 'Bioconductor package EnhancedVolcano',
