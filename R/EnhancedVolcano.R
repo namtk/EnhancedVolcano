@@ -11,7 +11,7 @@ EnhancedVolcano <- function(
   ylab = bquote("Posterior Probability"),
   axisLabSize = 18,
   title = 'Volcano plot',
-#   subtitle = 'Bioconductor package EnhancedVolcano',
+  subtitle = '',
   caption = paste0('Total = ', nrow(toptable), ' genes'),
   titleLabSize = 18,
   subtitleLabSize = 14,
